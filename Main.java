@@ -45,6 +45,12 @@ public class Main {
         case "Jalapeno":
             plants.add(new Plant.Jalapeno());
             break;
+        case "Puff-shroom":
+          plants.add(new Mushroom.PuffShroom(false));
+          break;
+        case "Doom-shroom":
+          plants.add(new Mushroom.DoomShroom(false));
+          break;
         default:
           System.out.println(input + " is not a plant");
       }
@@ -116,15 +122,16 @@ public class Main {
           if (n == 0) System.out.println("You have no attackers");
           break;
         case "Sort by HP":
-        Collections.sort(plants, new Comparators.HPComparator());
-          for (Plant p : plants){
+          Collections.sort(plants, new Comparators.HPComparator());
+          for (Plant p : plants) {
             System.out.println(p);
           }
           break;
         case "Sort by Name":
           Collections.sort(plants, new Comparators.NameComparator());
-          for (Plant p : plants){
+          for (Plant p : plants) {
             System.out.println(p);
+          }
         case "Sort by Sun Cost":
           Collections.sort(plants, new Comparators.SunCostComparator());
           for (Plant p : plants) {

@@ -58,7 +58,7 @@ public abstract class Plant {
   public static class LilyPad extends Plant implements Upgradable {
 
     public LilyPad() {
-      super("LilyPad", 25);
+      super("Lily Pad", 25);
     }
 
     public PlantUpgrade upgrade() {

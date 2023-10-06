@@ -20,7 +20,7 @@ public class Mushroom extends Plant {
     implements Attacker, InstantKiller {
 
     public DoomShroom(boolean state) {
-      super("Doom Shroom", 125, state);
+      super("Doom-Shroom", 125, state);
     }
 
     @Override
@@ -47,7 +47,7 @@ public class Mushroom extends Plant {
   public static class PuffShroom extends Mushroom implements Attacker {
 
     public PuffShroom(boolean state) {
-      super("Puff Shroom", 0, state);
+      super("Puff-Shroom", 0, state);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class Mushroom extends Plant {
   public static class SunShroom extends Mushroom implements SunProducer {
 
     public SunShroom(boolean state) {
-      super("Sun Shroom", 10, state);
+      super("Sun-Shroom", 10, state);
     }
 
     @Override
