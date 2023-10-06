@@ -2,8 +2,9 @@ public class Mushroom extends Plant {
 
   public boolean state = false;
 
-  public Mushroom(String name, int sun_cost) {
+  public Mushroom(String name, int sun_cost, boolean state) {
     super(name, sun_cost);
+    this.state = state;
   }
 
   boolean isAwake() {
@@ -16,8 +17,8 @@ public class Mushroom extends Plant {
 
   public class DoomShroom extends Mushroom implements Attacker, InstantKiller {
 
-    public DoomShroom() {
-      super("Doom Shroom", 125);
+    public DoomShroom(boolean state) {
+      super("Doom Shroom", 125, state);
     }
 
     @Override
@@ -43,8 +44,8 @@ public class Mushroom extends Plant {
 
   public class PuffShroom extends Mushroom implements Attacker {
 
-    public PuffShroom() {
-      super("Puff Shroom", 0);
+    public PuffShroom(boolean state) {
+      super("Puff Shroom", 0, state);
     }
 
     @Override
@@ -59,14 +60,12 @@ public class Mushroom extends Plant {
     public int rangeType() {
       return 4;
     }
-
-    public class WallNut {}
   }
 
   public class SunShroom extends Mushroom implements SunProducer {
 
-    public SunShroom() {
-      super("Sun Shroom", 10);
+    public SunShroom(boolean state) {
+      super("Sun Shroom", 10, state);
     }
 
     @Override
