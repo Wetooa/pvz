@@ -12,7 +12,7 @@ public class Mushroom extends Plant {
   }
 
   void awaken() {
-    state = true;
+    this.state = true;
   }
 
   public static class DoomShroom
@@ -30,9 +30,9 @@ public class Mushroom extends Plant {
 
     @Override
     public int attack() {
-      if (isAwake()) {
+      if (isAwake() && isAlive()) {
         System.out.println(name + " attacks");
-        die();
+        System.out.println(die());
         return 10;
       } else System.out.println(name + " is asleep and cannot attack");
       return 0;
@@ -58,9 +58,10 @@ public class Mushroom extends Plant {
 
     @Override
     public int attack() {
-      if (isAwake()) return 1; else System.out.println(
-        name + " is asleep and cannot attack"
-      );
+      if (isAwake()) {
+        System.out.println(name + " attacks");
+        return 1;
+      } else System.out.println(name + " is asleep and cannot attack");
       return 0;
     }
 
@@ -73,7 +74,7 @@ public class Mushroom extends Plant {
   public static class SunShroom extends Mushroom implements SunProducer {
 
     public SunShroom(boolean state) {
-      super("Sun-shroom", 10, state);
+      super("Sun-shroom", 25, state);
     }
 
     @Override

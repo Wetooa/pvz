@@ -34,6 +34,13 @@ public abstract class Plant {
     );
   }
 
+  public static class CoffeeBean extends Plant {
+
+    public CoffeeBean() {
+      super("Coffee Bean", Integer.MAX_VALUE, 75);
+    }
+  }
+
   public static class Jalapeno
     extends Plant
     implements Attacker, InstantKiller {
@@ -47,8 +54,9 @@ public abstract class Plant {
     }
 
     public int attack() {
+      if (!isAlive()) return 0;
       System.out.println(name + " attacks");
-      die();
+      System.out.println(die());
       return 5;
     }
 
@@ -165,14 +173,15 @@ public abstract class Plant {
 
     @Override
     public int attack() {
+      if (!isAlive()) return 0;
       System.out.println(name + " attacks");
-      die();
+      System.out.println(die());
       return 3;
     }
 
     @Override
     public int rangeType() {
-      return 4;
+      return 3;
     }
 
     @Override

@@ -24,7 +24,7 @@ public class Comparators {
 
     @Override
     public int compare(Plant o1, Plant o2) {
-      int a = o1.sun_cost - o2.sun_cost;
+      int a = o2.sun_cost - o1.sun_cost;
       if (a == 0) return o1.name.compareTo(o2.name);
       return a;
     }

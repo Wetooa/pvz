@@ -42,7 +42,7 @@ public class Main {
         case "Peashooter":
           plants.add(new Plant.Peashooter());
           break;
-        case "CatTail":
+        case "Cattail":
           for (int i = 0; i < plants.size(); ++i) {
             if (plants.get(i) instanceof Plant.LilyPad) {
               plants.set(i, (Plant) ((Upgradable) plants.get(i)).upgrade());
@@ -62,6 +62,18 @@ public class Main {
         case "Doom-shroom":
           plants.add(new Mushroom.DoomShroom(isAsleep));
           break;
+        case "Coffee Bean":
+          for (int i = 0; i < plants.size(); ++i) {
+            if (
+              plants.get(i) instanceof Mushroom &&
+              !((Mushroom) plants.get(i)).isAwake()
+            ) {
+              ((Mushroom) plants.get(i)).awaken();
+              System.out.println("Coffee Bean dies");
+              break;
+            }
+          }
+          break;
         default:
           System.out.println(input + " is not a plant");
       }
@@ -76,9 +88,8 @@ public class Main {
           break;
         case "Produce Sun":
           for (Plant p : plants) {
-            if (p instanceof SunProducer) {
+            if (p instanceof SunProducer && p.isAlive()) {
               x += ((SunProducer) p).produce_sun();
-
               ++n;
             }
           }
@@ -86,7 +97,7 @@ public class Main {
           break;
         case "Attack":
           for (Plant p : plants) {
-            if (p instanceof Attacker) {
+            if (p instanceof Attacker && p.isAlive()) {
               x += ((Attacker) p).attack();
               ++n;
             }
@@ -96,7 +107,7 @@ public class Main {
         // add more cases here
         case "Instant Kill Status":
           for (Plant p : plants) {
-            if (p instanceof InstantKiller) {
+            if (p instanceof InstantKiller && p.isAlive()) {
               ++n;
               System.out.println(
                 p.name +
@@ -114,7 +125,7 @@ public class Main {
           break;
         case "Attacker Status":
           for (Plant p : plants) {
-            if (p instanceof Attacker) {
+            if (p instanceof Attacker && p.isAlive()) {
               ++n;
               int r = ((Attacker) p).rangeType();
               System.out.println(
