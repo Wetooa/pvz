@@ -108,7 +108,7 @@ public abstract class Plant {
     }
   }
 
-  public static class Sunflower extends Plant implements SunProducer {
+  public static class Sunflower extends Plant implements SunProducer, Upgradable {
 
     public Sunflower() {
       super("Sunflower", 50);
@@ -118,9 +118,13 @@ public abstract class Plant {
     public int produce_sun() {
       return 50;
     }
+    public PlantUpgrade upgrade(){
+      PlantUpgrade upgraded = new TwinSunflower();
+      return upgraded;
+    }
   }
 
-  public static class TwinSunflower extends Plant implements SunProducer {
+  public static class TwinSunflower extends Plant implements SunProducer, PlantUpgrade {
 
     public TwinSunflower() {
       super("Twin Sunflower", 125);
@@ -128,6 +132,9 @@ public abstract class Plant {
 
     @Override
     public int produce_sun() {
+      return 50;
+    }
+    public int concurrentSunCost(){
       return 50;
     }
   }
