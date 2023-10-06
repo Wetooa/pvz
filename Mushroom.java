@@ -20,7 +20,7 @@ public class Mushroom extends Plant {
     implements Attacker, InstantKiller {
 
     public DoomShroom(boolean state) {
-      super("Doom-Shroom", 125, state);
+      super("Doom-shroom", 125, state);
     }
 
     @Override
@@ -30,7 +30,12 @@ public class Mushroom extends Plant {
 
     @Override
     public int attack() {
-      return 10;
+      if (isAwake()) {
+        System.out.println(name + " attacks");
+        die();
+        return 10;
+      } else System.out.println(name + " is asleep and cannot attack");
+      return 0;
     }
 
     @Override
@@ -40,6 +45,7 @@ public class Mushroom extends Plant {
 
     @Override
     public String die() {
+      hp = 0;
       return super.die() + " while exploding and leaves a crater";
     }
   }
@@ -47,7 +53,7 @@ public class Mushroom extends Plant {
   public static class PuffShroom extends Mushroom implements Attacker {
 
     public PuffShroom(boolean state) {
-      super("Puff-Shroom", 0, state);
+      super("Puff-shroom", 0, state);
     }
 
     @Override
@@ -60,21 +66,22 @@ public class Mushroom extends Plant {
 
     @Override
     public int rangeType() {
-      return 4;
+      return 3;
     }
   }
 
   public static class SunShroom extends Mushroom implements SunProducer {
 
     public SunShroom(boolean state) {
-      super("Sun-Shroom", 10, state);
+      super("Sun-shroom", 10, state);
     }
 
     @Override
     public int produce_sun() {
-      if (isAwake()) return 10; else System.out.println(
-        name + " is asleep and cannot produce sun"
-      );
+      if (isAwake()) {
+        System.out.println(name + " produces " + 10 + " suns");
+        return 10;
+      } else System.out.println(name + " is asleep and cannot produce sun");
       return 0;
     }
   }

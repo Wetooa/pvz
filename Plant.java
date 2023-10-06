@@ -39,7 +39,7 @@ public abstract class Plant {
     implements Attacker, InstantKiller {
 
     public Jalapeno() {
-      super("Jalapeno", 125);
+      super("Jalapeno", Integer.MAX_VALUE, 125);
     }
 
     public int killType() {
@@ -47,6 +47,8 @@ public abstract class Plant {
     }
 
     public int attack() {
+      System.out.println(name + " attacks");
+      die();
       return 5;
     }
 
@@ -56,6 +58,7 @@ public abstract class Plant {
 
     @Override
     public String die() {
+      hp = 0;
       return super.die() + " while exploding";
     }
   }
@@ -83,6 +86,7 @@ public abstract class Plant {
     }
 
     public int attack() {
+      System.out.println(name + " attacks");
       return 1;
     }
 
@@ -99,6 +103,7 @@ public abstract class Plant {
 
     @Override
     public int attack() {
+      System.out.println(name + " attacks");
       return 1;
     }
 
@@ -108,7 +113,9 @@ public abstract class Plant {
     }
   }
 
-  public static class Sunflower extends Plant implements SunProducer, Upgradable {
+  public static class Sunflower
+    extends Plant
+    implements SunProducer, Upgradable {
 
     public Sunflower() {
       super("Sunflower", 50);
@@ -116,15 +123,19 @@ public abstract class Plant {
 
     @Override
     public int produce_sun() {
-      return 50;
+      System.out.println(name + " produces " + 25 + " suns");
+      return 25;
     }
-    public PlantUpgrade upgrade(){
+
+    public PlantUpgrade upgrade() {
       PlantUpgrade upgraded = new TwinSunflower();
       return upgraded;
     }
   }
 
-  public static class TwinSunflower extends Plant implements SunProducer, PlantUpgrade {
+  public static class TwinSunflower
+    extends Plant
+    implements SunProducer, PlantUpgrade {
 
     public TwinSunflower() {
       super("Twin Sunflower", 125);
@@ -132,9 +143,11 @@ public abstract class Plant {
 
     @Override
     public int produce_sun() {
+      System.out.println(name + " produces " + 50 + " suns");
       return 50;
     }
-    public int concurrentSunCost(){
+
+    public int concurrentSunCost() {
       return 50;
     }
   }
@@ -142,7 +155,7 @@ public abstract class Plant {
   public static class Squash extends Plant implements Attacker, InstantKiller {
 
     public Squash() {
-      super("Squash", 50);
+      super("Squash", Integer.MAX_VALUE, 50);
     }
 
     @Override
@@ -152,6 +165,8 @@ public abstract class Plant {
 
     @Override
     public int attack() {
+      System.out.println(name + " attacks");
+      die();
       return 3;
     }
 
@@ -162,6 +177,7 @@ public abstract class Plant {
 
     @Override
     public String die() {
+      hp = 0;
       return super.die() + " while squashing zombies";
     }
   }

@@ -7,7 +7,7 @@ public class Comparators {
     @Override
     public int compare(Plant o1, Plant o2) {
       int a = o2.hp - o1.hp;
-      if (a == 0) return o2.name.compareTo(o1.name);
+      if (a == 0) return o1.name.compareTo(o2.name);
       return a;
     }
   }
@@ -16,7 +16,7 @@ public class Comparators {
 
     @Override
     public int compare(Plant o1, Plant o2) {
-      return o2.name.compareTo(o1.name);
+      return o1.name.compareTo(o2.name);
     }
   }
 
@@ -25,7 +25,7 @@ public class Comparators {
     @Override
     public int compare(Plant o1, Plant o2) {
       int a = o1.sun_cost - o2.sun_cost;
-      if (a == 0) return o2.name.compareTo(o1.name);
+      if (a == 0) return o1.name.compareTo(o2.name);
       return a;
     }
   }

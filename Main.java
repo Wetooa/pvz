@@ -15,7 +15,7 @@ public class Main {
     do {
       System.out.print("Add a plant: ");
       input = sc.nextLine();
-      boolean isAsleep = mode == "Night" || mode == "Fog";
+      boolean isAsleep = mode.equals("Night") || mode.equals("Fog");
       switch (input) {
         case "DONE":
           break;
@@ -26,26 +26,36 @@ public class Main {
           plants.add(new Mushroom.SunShroom(isAsleep));
           break;
         case "Sunflower":
-            plants.add(new Plant.Sunflower());
-            break;
+          plants.add(new Plant.Sunflower());
+          break;
         case "Twin Sunflower":
-            plants.add(new Plant.TwinSunflower());
-            break;
+          for (int i = 0; i < plants.size(); ++i) {
+            if (plants.get(i) instanceof Plant.Sunflower) {
+              plants.set(i, (Plant) ((Upgradable) plants.get(i)).upgrade());
+              break;
+            }
+          }
+          break;
         case "Squash":
-            plants.add(new Plant.Squash());
-            break;
+          plants.add(new Plant.Squash());
+          break;
         case "Peashooter":
-            plants.add(new Plant.Peashooter());
-            break;
+          plants.add(new Plant.Peashooter());
+          break;
         case "CatTail":
-            plants.add(new Plant.Cattail());
-            break;
+          for (int i = 0; i < plants.size(); ++i) {
+            if (plants.get(i) instanceof Plant.LilyPad) {
+              plants.set(i, (Plant) ((Upgradable) plants.get(i)).upgrade());
+              break;
+            }
+          }
+          break;
         case "Lily Pad":
-            plants.add(new Plant.LilyPad());
-            break;
+          plants.add(new Plant.LilyPad());
+          break;
         case "Jalapeno":
-            plants.add(new Plant.Jalapeno());
-            break;
+          plants.add(new Plant.Jalapeno());
+          break;
         case "Puff-shroom":
           plants.add(new Mushroom.PuffShroom(isAsleep));
           break;
@@ -68,10 +78,11 @@ public class Main {
           for (Plant p : plants) {
             if (p instanceof SunProducer) {
               x += ((SunProducer) p).produce_sun();
+
               ++n;
             }
           }
-          System.out.println(n + " sun producers gather" + x + " suns");
+          System.out.println(n + " sun producers gather " + x + " suns");
           break;
         case "Attack":
           for (Plant p : plants) {
@@ -111,9 +122,9 @@ public class Main {
                 (
                   r == 1
                     ? " can attack on a single line"
-                    : r == 2
+                    : r == 3
                       ? " can attack only when enemy is nearby"
-                      : r == 3
+                      : r == 2
                         ? " can attack using area-of-effect"
                         : " can attack any enemies from anywhere"
                 )
@@ -133,10 +144,11 @@ public class Main {
           for (Plant p : plants) {
             System.out.println(p);
           }
+          break;
         case "Sort by Sun Cost":
           Collections.sort(plants, new Comparators.SunCostComparator());
           for (Plant p : plants) {
-            System.out.println(p.toString());
+            System.out.println(p);
           }
           break;
         default:
