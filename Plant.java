@@ -33,6 +33,45 @@ public abstract class Plant {
       (sun_cost == Integer.MAX_VALUE ? "∞" : sun_cost)
     );
   }
+  
+  public class Jalapeno extends Plant implements Attacker,InstantKiller {
+    public Jalapeno(){
+      super("Jalapeno",125);
+    }
+    public int killType(){
+      return 1;
+    }
+    public int attack(){
+      return 5;
+    }
+    public int rangeType(){
+      return 1;
+    }
+
+  }
+  public class LilyPad extends Plant implements Upgradable{
+    public LilyPad(){
+      super("LilyPad",25);
+    }
+    public PlantUpgrade upgrade(){
+      PlantUpgrade upgraded = new Cattail();
+      return upgraded;
+    }
+  }
+  public class Cattail extends Plant implements PlantUpgrade,Attacker {
+    public Cattail(){
+      super("Cattail",225);
+    }
+    public int concurrentSunCost(){
+      return 25;
+    }
+    public int attack(){
+      return 1;
+    }
+    public int rangeType(){
+      return 4;
+    }
+  }
 
   public class Peashooter extends Plant implements Attacker {
 
@@ -103,4 +142,5 @@ public abstract class Plant {
       super("Wall Nut", 25, 50);
     }
   }
+  
 }
