@@ -100,6 +100,7 @@ public class Main {
           for (Plant p : plants) {
             System.out.println(p.toString());
           }
+          break;
         default:
           System.out.println("Unknown action: " + input);
       }
