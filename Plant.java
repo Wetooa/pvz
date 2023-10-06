@@ -28,9 +28,9 @@ public abstract class Plant {
     return (
       name +
       " (" +
-      hp +
+      (hp == Integer.MAX_VALUE ? "∞" : hp) +
       ") - cost: " +
-      (sun_cost == Integer.MAX_VALUE ? "∞" : sun_cost)
+      sun_cost
     );
   }
 

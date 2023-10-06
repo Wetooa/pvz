@@ -2,7 +2,7 @@ import java.util.Comparator;
 
 public class Comparators {
 
-  public class HPComparator implements Comparator<Plant> {
+  public static class HPComparator implements Comparator<Plant> {
 
     @Override
     public int compare(Plant o1, Plant o2) {
@@ -12,7 +12,7 @@ public class Comparators {
     }
   }
 
-  public class NameComparator implements Comparator<Plant> {
+  public static class NameComparator implements Comparator<Plant> {
 
     @Override
     public int compare(Plant o1, Plant o2) {
@@ -20,7 +20,7 @@ public class Comparators {
     }
   }
 
-  public class SunCostComparator implements Comparator<Plant> {
+  public static class SunCostComparator implements Comparator<Plant> {
 
     @Override
     public int compare(Plant o1, Plant o2) {

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -94,6 +95,11 @@ public class Main {
           }
           if (n == 0) System.out.println("You have no attackers");
           break;
+        case "Sort by Sun Cost":
+          Collections.sort(plants, new Comparators.SunCostComparator());
+          for (Plant p : plants) {
+            System.out.println(p.toString());
+          }
         default:
           System.out.println("Unknown action: " + input);
       }
