@@ -53,6 +53,11 @@ public abstract class Plant {
     public int rangeType() {
       return 1;
     }
+
+    @Override
+    public String die() {
+      return super.die() + " while exploding";
+    }
   }
 
   public static class LilyPad extends Plant implements Upgradable {
@@ -146,6 +151,11 @@ public abstract class Plant {
     @Override
     public int rangeType() {
       return 4;
+    }
+
+    @Override
+    public String die() {
+      return super.die() + " while squashing zombies";
     }
   }
 

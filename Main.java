@@ -15,6 +15,7 @@ public class Main {
     do {
       System.out.print("Add a plant: ");
       input = sc.nextLine();
+      boolean isAsleep = mode == "Night" || mode == "Fog";
       switch (input) {
         case "DONE":
           break;
@@ -22,13 +23,13 @@ public class Main {
           plants.add((new Plant.WallNut()));
           break;
         case "Sun-shroom":
-          plants.add(new Mushroom.SunShroom(false));
+          plants.add(new Mushroom.SunShroom(isAsleep));
           break;
         case "Puff-shroom":
-          plants.add(new Mushroom.PuffShroom(false));
+          plants.add(new Mushroom.PuffShroom(isAsleep));
           break;
         case "Doom-shroom":
-          plants.add(new Mushroom.DoomShroom(false));
+          plants.add(new Mushroom.DoomShroom(isAsleep));
           break;
         default:
           System.out.println(input + " is not a plant");
