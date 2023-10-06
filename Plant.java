@@ -25,23 +25,47 @@ public abstract class Plant {
 
   @Override
   public String toString() {
-    return name + " (" + hp + ") " + 
-  }
-}
-
-public class Peashooter extends Plant implements Attacker {
-
-  public Peashooter() {
-    super("Peashooter", 100);
+    return name + " (" + hp + ") - cost: " + sun_cost;
   }
 
-  @Override
-  public int attack() {
-    return 1;
+  public class Peashooter extends Plant implements Attacker {
+
+    public Peashooter() {
+      super("Peashooter", 100);
+    }
+
+    @Override
+    public int attack() {
+      return 1;
+    }
+
+    @Override
+    public int rangeType() {
+      return 1;
+    }
   }
 
-  @Override
-  public int rangeType() {
-    return 1;
+  public class Sunflower extends Plant implements SunProducer {
+
+    public Sunflower() {
+      super("Sunflower", 50);
+    }
+
+    @Override
+    public int produce_sun() {
+      return 50;
+    }
+  }
+
+  public class TwinSunflower extends Plant implements SunProducer {
+
+    public TwinSunflower() {
+      super("Twin Sunflower", 125);
+    }
+
+    @Override
+    public int produce_sun() {
+      return 50;
+    }
   }
 }
