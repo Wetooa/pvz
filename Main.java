@@ -19,7 +19,7 @@ public class Main {
         case "DONE":
           break;
         case "Wall Nut":
-          plants.add(new Plant.WallNut());
+          plants.add((new Plant.WallNut()));
           break;
         case "Sun-shroom":
           plants.add(new Mushroom.SunShroom(false));
@@ -105,6 +105,10 @@ public class Main {
           Collections.sort(plants, new Comparators.NameComparator());
           for (Plant p : plants){
             System.out.println(p);
+        case "Sort by Sun Cost":
+          Collections.sort(plants, new Comparators.SunCostComparator());
+          for (Plant p : plants) {
+            System.out.println(p.toString());
           }
           break;
         default:

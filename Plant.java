@@ -28,52 +28,65 @@ public abstract class Plant {
     return (
       name +
       " (" +
-      hp +
+      (hp == Integer.MAX_VALUE ? "∞" : hp) +
       ") - cost: " +
-      (sun_cost == Integer.MAX_VALUE ? "∞" : sun_cost)
+      sun_cost
     );
   }
-  
-  public class Jalapeno extends Plant implements Attacker,InstantKiller {
-    public Jalapeno(){
-      super("Jalapeno",125);
+
+  public static class Jalapeno
+    extends Plant
+    implements Attacker, InstantKiller {
+
+    public Jalapeno() {
+      super("Jalapeno", 125);
     }
-    public int killType(){
-      return 1;
-    }
-    public int attack(){
-      return 5;
-    }
-    public int rangeType(){
+
+    public int killType() {
       return 1;
     }
 
-  }
-  public class LilyPad extends Plant implements Upgradable{
-    public LilyPad(){
-      super("LilyPad",25);
+    public int attack() {
+      return 5;
     }
-    public PlantUpgrade upgrade(){
+
+    public int rangeType() {
+      return 1;
+    }
+  }
+
+  public static class LilyPad extends Plant implements Upgradable {
+
+    public LilyPad() {
+      super("LilyPad", 25);
+    }
+
+    public PlantUpgrade upgrade() {
       PlantUpgrade upgraded = new Cattail();
       return upgraded;
     }
   }
-  public class Cattail extends Plant implements PlantUpgrade,Attacker {
-    public Cattail(){
-      super("Cattail",225);
+
+  public static class Cattail extends Plant implements PlantUpgrade, Attacker {
+
+    public Cattail() {
+      super("Cattail", 225);
     }
-    public int concurrentSunCost(){
+
+    public int concurrentSunCost() {
       return 25;
     }
-    public int attack(){
+
+    public int attack() {
       return 1;
     }
-    public int rangeType(){
+
+    public int rangeType() {
       return 4;
     }
   }
 
-  public class Peashooter extends Plant implements Attacker {
+  public static class Peashooter extends Plant implements Attacker {
 
     public Peashooter() {
       super("Peashooter", 100);
@@ -90,7 +103,7 @@ public abstract class Plant {
     }
   }
 
-  public class Sunflower extends Plant implements SunProducer {
+  public static class Sunflower extends Plant implements SunProducer {
 
     public Sunflower() {
       super("Sunflower", 50);
@@ -102,7 +115,7 @@ public abstract class Plant {
     }
   }
 
-  public class TwinSunflower extends Plant implements SunProducer {
+  public static class TwinSunflower extends Plant implements SunProducer {
 
     public TwinSunflower() {
       super("Twin Sunflower", 125);
@@ -114,7 +127,7 @@ public abstract class Plant {
     }
   }
 
-  public class Squash extends Plant implements Attacker, InstantKiller {
+  public static class Squash extends Plant implements Attacker, InstantKiller {
 
     public Squash() {
       super("Squash", 50);
@@ -136,11 +149,10 @@ public abstract class Plant {
     }
   }
 
-  public class WallNut extends Plant {
+  public static class WallNut extends Plant {
 
     public WallNut() {
       super("Wall Nut", 25, 50);
     }
   }
-  
 }

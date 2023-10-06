@@ -15,7 +15,9 @@ public class Mushroom extends Plant {
     state = true;
   }
 
-  public class DoomShroom extends Mushroom implements Attacker, InstantKiller {
+  public static class DoomShroom
+    extends Mushroom
+    implements Attacker, InstantKiller {
 
     public DoomShroom(boolean state) {
       super("Doom Shroom", 125, state);
@@ -42,7 +44,7 @@ public class Mushroom extends Plant {
     }
   }
 
-  public class PuffShroom extends Mushroom implements Attacker {
+  public static class PuffShroom extends Mushroom implements Attacker {
 
     public PuffShroom(boolean state) {
       super("Puff Shroom", 0, state);
@@ -62,7 +64,7 @@ public class Mushroom extends Plant {
     }
   }
 
-  public class SunShroom extends Mushroom implements SunProducer {
+  public static class SunShroom extends Mushroom implements SunProducer {
 
     public SunShroom(boolean state) {
       super("Sun Shroom", 10, state);
