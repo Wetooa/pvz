@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -19,7 +18,7 @@ public class Main {
         case "DONE":
           break;
         case "Wall Nut":
-          plants.add(new Plant.WallNut());
+          plants.add((new Plant.WallNut()));
           break;
         case "Sun-shroom":
           plants.add(new Mushroom.SunShroom(false));
