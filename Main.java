@@ -24,7 +24,27 @@ public class Main {
         case "Sun-shroom":
           plants.add(new Mushroom.SunShroom(false));
           break;
-        // add more plants here
+        case "Sunflower":
+            plants.add(new Plant.Sunflower());
+            break;
+        case "Twin Sunflower":
+            plants.add(new Plant.TwinSunflower());
+            break;
+        case "Squash":
+            plants.add(new Plant.Squash());
+            break;
+        case "Peashooter":
+            plants.add(new Plant.Peashooter());
+            break;
+        case "CatTail":
+            plants.add(new Plant.Cattail());
+            break;
+        case "Lily Pad":
+            plants.add(new Plant.LilyPad());
+            break;
+        case "Jalapeno":
+            plants.add(new Plant.Jalapeno());
+            break;
         default:
           System.out.println(input + " is not a plant");
       }
