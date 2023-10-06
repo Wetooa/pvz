@@ -25,7 +25,13 @@ public abstract class Plant {
 
   @Override
   public String toString() {
-    return name + " (" + hp + ") - cost: " + sun_cost;
+    return (
+      name +
+      " (" +
+      hp +
+      ") - cost: " +
+      (sun_cost == Integer.MAX_VALUE ? "∞" : sun_cost)
+    );
   }
 
   public class Peashooter extends Plant implements Attacker {
@@ -66,6 +72,35 @@ public abstract class Plant {
     @Override
     public int produce_sun() {
       return 50;
+    }
+  }
+
+  public class Squash extends Plant implements Attacker, InstantKiller {
+
+    public Squash() {
+      super("Squash", 50);
+    }
+
+    @Override
+    public int killType() {
+      return 2;
+    }
+
+    @Override
+    public int attack() {
+      return 3;
+    }
+
+    @Override
+    public int rangeType() {
+      return 4;
+    }
+  }
+
+  public class WallNut extends Plant {
+
+    public WallNut() {
+      super("Wall Nut", 25, 50);
     }
   }
 }
